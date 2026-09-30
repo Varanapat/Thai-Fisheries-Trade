@@ -1,0 +1,296 @@
+﻿iso3,iso2,name_en,region,income_level,capital,longitude,latitude,is_aggregate
+ABW,AW,Aruba,Latin America & Caribbean ,High income,Oranjestad,-70.0167,12.5167,False
+AFE,ZH,Africa Eastern and Southern,Aggregates,Aggregates,,,,True
+AFG,AF,Afghanistan,"Middle East, North Africa, Afghanistan & Pakistan",Low income,Kabul,69.1761,34.5228,False
+AFR,A9,Africa,Aggregates,Aggregates,,,,True
+AFW,ZI,Africa Western and Central,Aggregates,Aggregates,,,,True
+AGO,AO,Angola,Sub-Saharan Africa ,Lower middle income,Luanda,13.242,-8.81155,False
+ALB,AL,Albania,Europe & Central Asia,Upper middle income,Tirane,19.8172,41.3317,False
+AND,AD,Andorra,Europe & Central Asia,High income,Andorra la Vella,1.5218,42.5075,False
+ARB,1A,Arab World,Aggregates,Aggregates,,,,True
+ARE,AE,United Arab Emirates,"Middle East, North Africa, Afghanistan & Pakistan",High income,Abu Dhabi,54.3705,24.4764,False
+ARG,AR,Argentina,Latin America & Caribbean ,Upper middle income,Buenos Aires,-58.4173,-34.6118,False
+ARM,AM,Armenia,Europe & Central Asia,Upper middle income,Yerevan,44.509,40.1596,False
+ASM,AS,American Samoa,East Asia & Pacific,High income,Pago Pago,-170.691,-14.2846,False
+ATG,AG,Antigua and Barbuda,Latin America & Caribbean ,High income,Saint John's,-61.8456,17.1175,False
+AUS,AU,Australia,East Asia & Pacific,High income,Canberra,149.129,-35.282,False
+AUT,AT,Austria,Europe & Central Asia,High income,Vienna,16.3798,48.2201,False
+AZE,AZ,Azerbaijan,Europe & Central Asia,Upper middle income,Baku,49.8932,40.3834,False
+BDI,BI,Burundi,Sub-Saharan Africa ,Low income,Bujumbura,29.3639,-3.3784,False
+BEA,B4,East Asia & Pacific (IBRD-only countries),Aggregates,Aggregates,,,,True
+BEC,B7,Europe & Central Asia (IBRD-only countries),Aggregates,Aggregates,,,,True
+BEL,BE,Belgium,Europe & Central Asia,High income,Brussels,4.36761,50.8371,False
+BEN,BJ,Benin,Sub-Saharan Africa ,Lower middle income,Porto-Novo,2.6323,6.4779,False
+BFA,BF,Burkina Faso,Sub-Saharan Africa ,Low income,Ouagadougou,-1.53395,12.3605,False
+BGD,BD,Bangladesh,South Asia,Lower middle income,Dhaka,90.4113,23.7055,False
+BGR,BG,Bulgaria,Europe & Central Asia,High income,Sofia,23.3238,42.7105,False
+BHI,B1,IBRD countries classified as high income,Aggregates,Aggregates,,,,True
+BHR,BH,Bahrain,"Middle East, North Africa, Afghanistan & Pakistan",High income,Manama,50.5354,26.1921,False
+BHS,BS,"Bahamas, The",Latin America & Caribbean ,High income,Nassau,-77.339,25.0661,False
+BIH,BA,Bosnia and Herzegovina,Europe & Central Asia,Upper middle income,Sarajevo,18.4214,43.8607,False
+BLA,B2,Latin America & the Caribbean (IBRD-only countries),Aggregates,Aggregates,,,,True
+BLR,BY,Belarus,Europe & Central Asia,Upper middle income,Minsk,27.5766,53.9678,False
+BLZ,BZ,Belize,Latin America & Caribbean ,Upper middle income,Belmopan,-88.7713,17.2534,False
+BMN,B3,"Middle East, North Africa, Afghanistan & Pakistan (IBRD only)",Aggregates,Aggregates,,,,True
+BMU,BM,Bermuda,North America,High income,Hamilton,-64.706,32.3293,False
+BOL,BO,Bolivia,Latin America & Caribbean ,Lower middle income,La Paz,-66.1936,-13.9908,False
+BRA,BR,Brazil,Latin America & Caribbean ,Upper middle income,Brasilia,-47.9292,-15.7801,False
+BRB,BB,Barbados,Latin America & Caribbean ,High income,Bridgetown,-59.6105,13.0935,False
+BRN,BN,Brunei Darussalam,East Asia & Pacific,High income,Bandar Seri Begawan,114.946,4.94199,False
+BSS,B6,Sub-Saharan Africa (IBRD-only countries),Aggregates,Aggregates,,,,True
+BTN,BT,Bhutan,South Asia,Lower middle income,Thimphu,89.6177,27.5768,False
+BWA,BW,Botswana,Sub-Saharan Africa ,Upper middle income,Gaborone,25.9201,-24.6544,False
+CAA,C9,Sub-Saharan Africa (IFC classification),Aggregates,Aggregates,,,,True
+CAF,CF,Central African Republic,Sub-Saharan Africa ,Low income,Bangui,21.6407,5.63056,False
+CAN,CA,Canada,North America,High income,Ottawa,-75.6919,45.4215,False
+CEA,C4,East Asia and the Pacific (IFC classification),Aggregates,Aggregates,,,,True
+CEB,B8,Central Europe and the Baltics,Aggregates,Aggregates,,,,True
+CEU,C5,Europe and Central Asia (IFC classification),Aggregates,Aggregates,,,,True
+CHE,CH,Switzerland,Europe & Central Asia,High income,Bern,7.44821,46.948,False
+CHI,JG,Channel Islands,Europe & Central Asia,High income,,,,False
+CHL,CL,Chile,Latin America & Caribbean ,High income,Santiago,-70.6475,-33.475,False
+CHN,CN,China,East Asia & Pacific,Upper middle income,Beijing,116.286,40.0495,False
+CIV,CI,Cote d'Ivoire,Sub-Saharan Africa ,Lower middle income,Yamoussoukro,-4.0305,5.332,False
+CLA,C6,Latin America and the Caribbean (IFC classification),Aggregates,Aggregates,,,,True
+CME,C7,Middle East and North Africa (IFC classification),Aggregates,Aggregates,,,,True
+CMR,CM,Cameroon,Sub-Saharan Africa ,Lower middle income,Yaounde,11.5174,3.8721,False
+COD,CD,"Congo, Dem. Rep.",Sub-Saharan Africa ,Low income,Kinshasa,15.3222,-4.325,False
+COG,CG,"Congo, Rep.",Sub-Saharan Africa ,Lower middle income,Brazzaville,15.2662,-4.2767,False
+COL,CO,Colombia,Latin America & Caribbean ,Upper middle income,Bogota,-74.082,4.60987,False
+COM,KM,Comoros,Sub-Saharan Africa ,Lower middle income,Moroni,43.2418,-11.6986,False
+CPV,CV,Cabo Verde,Sub-Saharan Africa ,Upper middle income,Praia,-23.5087,14.9218,False
+CRI,CR,Costa Rica,Latin America & Caribbean ,High income,San Jose,-84.0089,9.63701,False
+CSA,C8,South Asia (IFC classification),Aggregates,Aggregates,,,,True
+CSS,S3,Caribbean small states,Aggregates,Aggregates,,,,True
+CUB,CU,Cuba,Latin America & Caribbean ,Upper middle income,Havana,-82.3667,23.1333,False
+CUW,CW,Curacao,Latin America & Caribbean ,High income,Willemstad,,,False
+CYM,KY,Cayman Islands,Latin America & Caribbean ,High income,George Town,-81.3857,19.3022,False
+CYP,CY,Cyprus,Europe & Central Asia,High income,Nicosia,33.3736,35.1676,False
+CZE,CZ,Czechia,Europe & Central Asia,High income,Prague,14.4205,50.0878,False
+DEA,D4,East Asia & Pacific (IDA-eligible countries),Aggregates,Aggregates,,,,True
+DEC,D7,Europe & Central Asia (IDA-eligible countries),Aggregates,Aggregates,,,,True
+DEU,DE,Germany,Europe & Central Asia,High income,Berlin,13.4115,52.5235,False
+DJI,DJ,Djibouti,"Middle East, North Africa, Afghanistan & Pakistan",Lower middle income,Djibouti,43.1425,11.5806,False
+DLA,D2,Latin America & the Caribbean (IDA-eligible countries),Aggregates,Aggregates,,,,True
+DMA,DM,Dominica,Latin America & Caribbean ,Upper middle income,Roseau,-61.39,15.2976,False
+DMN,D3,"Middle East, North Africa, Afghanistan & Pakistan (IDA total)",Aggregates,Aggregates,,,,True
+DNK,DK,Denmark,Europe & Central Asia,High income,Copenhagen,12.5681,55.6763,False
+DNS,N6,IDA countries in Sub-Saharan Africa not classified as fragile situations ,Aggregates,Aggregates,,,,True
+DOM,DO,Dominican Republic,Latin America & Caribbean ,Upper middle income,Santo Domingo,-69.8908,18.479,False
+DSA,D5,South Asia (IDA-eligible countries),Aggregates,Aggregates,,,,True
+DSF,F6,IDA countries in Sub-Saharan Africa classified as fragile situations ,Aggregates,Aggregates,,,,True
+DSS,D6,Sub-Saharan Africa (IDA-eligible countries),Aggregates,Aggregates,,,,True
+DZA,DZ,Algeria,"Middle East, North Africa, Afghanistan & Pakistan",Upper middle income,Algiers,3.05097,36.7397,False
+EAP,4E,East Asia & Pacific (excluding high income),Aggregates,Aggregates,,,,True
+EAR,V2,Early-demographic dividend,Aggregates,Aggregates,,,,True
+EAS,Z4,East Asia & Pacific,Aggregates,Aggregates,,,,True
+ECA,7E,Europe & Central Asia (excluding high income),Aggregates,Aggregates,,,,True
+ECS,Z7,Europe & Central Asia,Aggregates,Aggregates,,,,True
+ECU,EC,Ecuador,Latin America & Caribbean ,Upper middle income,Quito,-78.5243,-0.229498,False
+EGY,EG,"Egypt, Arab Rep.","Middle East, North Africa, Afghanistan & Pakistan",Lower middle income,Cairo,31.2461,30.0982,False
+EMU,XC,Euro area,Aggregates,Aggregates,,,,True
+ERI,ER,Eritrea,Sub-Saharan Africa ,Low income,Asmara,38.9183,15.3315,False
+ESP,ES,Spain,Europe & Central Asia,High income,Madrid,-3.70327,40.4167,False
+EST,EE,Estonia,Europe & Central Asia,High income,Tallinn,24.7586,59.4392,False
+ETH,ET,Ethiopia,Sub-Saharan Africa ,Low income,Addis Ababa,38.7468,9.02274,False
+EUU,EU,European Union,Aggregates,Aggregates,,,,True
+FIN,FI,Finland,Europe & Central Asia,High income,Helsinki,24.9525,60.1608,False
+FJI,FJ,Fiji,East Asia & Pacific,Upper middle income,Suva,178.399,-18.1149,False
+FRA,FR,France,Europe & Central Asia,High income,Paris,2.35097,48.8566,False
+FRO,FO,Faroe Islands,Europe & Central Asia,High income,Torshavn,-6.91181,61.8926,False
+FSM,FM,"Micronesia, Fed. Sts.",East Asia & Pacific,Upper middle income,Palikir,158.185,6.91771,False
+FXS,6F,"IDA countries classified as fragile situations, excluding Sub-Saharan Africa",Aggregates,Aggregates,,,,True
+GAB,GA,Gabon,Sub-Saharan Africa ,Upper middle income,Libreville,9.45162,0.38832,False
+GBR,GB,United Kingdom,Europe & Central Asia,High income,London,-0.126236,51.5002,False
+GEO,GE,Georgia,Europe & Central Asia,Upper middle income,Tbilisi,44.793,41.71,False
+GHA,GH,Ghana,Sub-Saharan Africa ,Lower middle income,Accra,-0.20795,5.57045,False
+GIB,GI,Gibraltar,Europe & Central Asia,High income,,,,False
+GIN,GN,Guinea,Sub-Saharan Africa ,Lower middle income,Conakry,-13.7,9.51667,False
+GMB,GM,"Gambia, The",Sub-Saharan Africa ,Low income,Banjul,-16.5885,13.4495,False
+GNB,GW,Guinea-Bissau,Sub-Saharan Africa ,Low income,Bissau,-15.1804,11.8037,False
+GNQ,GQ,Equatorial Guinea,Sub-Saharan Africa ,Upper middle income,Malabo,8.7741,3.7523,False
+GRC,GR,Greece,Europe & Central Asia,High income,Athens,23.7166,37.9792,False
+GRD,GD,Grenada,Latin America & Caribbean ,Upper middle income,Saint George's,-61.7449,12.0653,False
+GRL,GL,Greenland,Europe & Central Asia,High income,Nuuk,-51.7214,64.1836,False
+GTM,GT,Guatemala,Latin America & Caribbean ,Upper middle income,Guatemala City,-90.5328,14.6248,False
+GUM,GU,Guam,East Asia & Pacific,High income,Agana,144.794,13.4443,False
+GUY,GY,Guyana,Latin America & Caribbean ,High income,Georgetown,-58.1548,6.80461,False
+HIC,XD,High income,Aggregates,Aggregates,,,,True
+HKG,HK,"Hong Kong SAR, China",East Asia & Pacific,High income,,114.109,22.3964,False
+HND,HN,Honduras,Latin America & Caribbean ,Lower middle income,Tegucigalpa,-87.4667,15.1333,False
+HPC,XE,Heavily indebted poor countries (HIPC),Aggregates,Aggregates,,,,True
+HRV,HR,Croatia,Europe & Central Asia,High income,Zagreb,15.9614,45.8069,False
+HTI,HT,Haiti,Latin America & Caribbean ,Lower middle income,Port-au-Prince,-72.3288,18.5392,False
+HUN,HU,Hungary,Europe & Central Asia,High income,Budapest,19.0408,47.4984,False
+IBB,ZB,"IBRD, including blend",Aggregates,Aggregates,,,,True
+IBD,XF,IBRD only,Aggregates,Aggregates,,,,True
+IBT,ZT,IDA & IBRD total,Aggregates,Aggregates,,,,True
+IDA,XG,IDA total,Aggregates,Aggregates,,,,True
+IDB,XH,IDA blend,Aggregates,Aggregates,,,,True
+IDN,ID,Indonesia,East Asia & Pacific,Upper middle income,Jakarta,106.83,-6.19752,False
+IDX,XI,IDA only,Aggregates,Aggregates,,,,True
+IMN,IM,Isle of Man,Europe & Central Asia,High income,Douglas,-4.47928,54.1509,False
+IND,IN,India,South Asia,Lower middle income,New Delhi,77.225,28.6353,False
+INX,XY,Not classified,Aggregates,Aggregates,,,,True
+IRL,IE,Ireland,Europe & Central Asia,High income,Dublin,-6.26749,53.3441,False
+IRN,IR,"Iran, Islamic Rep.","Middle East, North Africa, Afghanistan & Pakistan",Upper middle income,Tehran,51.4447,35.6878,False
+IRQ,IQ,Iraq,"Middle East, North Africa, Afghanistan & Pakistan",Upper middle income,Baghdad,44.394,33.3302,False
+ISL,IS,Iceland,Europe & Central Asia,High income,Reykjavik,-21.8952,64.1353,False
+ISR,IL,Israel,"Middle East, North Africa, Afghanistan & Pakistan",High income,,35.2035,31.7717,False
+ITA,IT,Italy,Europe & Central Asia,High income,Rome,12.4823,41.8955,False
+JAM,JM,Jamaica,Latin America & Caribbean ,Upper middle income,Kingston,-76.792,17.9927,False
+JOR,JO,Jordan,"Middle East, North Africa, Afghanistan & Pakistan",Upper middle income,Amman,35.9263,31.9497,False
+JPN,JP,Japan,East Asia & Pacific,High income,Tokyo,139.77,35.67,False
+KAZ,KZ,Kazakhstan,Europe & Central Asia,Upper middle income,Astana,71.4382,51.1879,False
+KEN,KE,Kenya,Sub-Saharan Africa ,Lower middle income,Nairobi,36.8126,-1.27975,False
+KGZ,KG,Kyrgyz Republic,Europe & Central Asia,Lower middle income,Bishkek,74.6057,42.8851,False
+KHM,KH,Cambodia,East Asia & Pacific,Lower middle income,Phnom Penh,104.874,11.5556,False
+KIR,KI,Kiribati,East Asia & Pacific,Lower middle income,Tarawa,172.979,1.32905,False
+KNA,KN,St. Kitts and Nevis,Latin America & Caribbean ,High income,Basseterre,-62.7309,17.3,False
+KOR,KR,"Korea, Rep.",East Asia & Pacific,High income,Seoul,126.957,37.5323,False
+KWT,KW,Kuwait,"Middle East, North Africa, Afghanistan & Pakistan",High income,Kuwait City,47.9824,29.3721,False
+LAC,XJ,Latin America & Caribbean (excluding high income),Aggregates,Aggregates,,,,True
+LAO,LA,Lao PDR,East Asia & Pacific,Lower middle income,Vientiane,102.177,18.5826,False
+LBN,LB,Lebanon,"Middle East, North Africa, Afghanistan & Pakistan",Lower middle income,Beirut,35.5134,33.8872,False
+LBR,LR,Liberia,Sub-Saharan Africa ,Low income,Monrovia,-10.7957,6.30039,False
+LBY,LY,Libya,"Middle East, North Africa, Afghanistan & Pakistan",Upper middle income,Tripoli,13.1072,32.8578,False
+LCA,LC,St. Lucia,Latin America & Caribbean ,Upper middle income,Castries,-60.9832,14,False
+LCN,ZJ,Latin America & Caribbean ,Aggregates,Aggregates,,,,True
+LDC,XL,Least developed countries: UN classification,Aggregates,Aggregates,,,,True
+LIC,XM,Low income,Aggregates,Aggregates,,,,True
+LIE,LI,Liechtenstein,Europe & Central Asia,High income,Vaduz,9.52148,47.1411,False
+LKA,LK,Sri Lanka,South Asia,Upper middle income,Colombo,79.8528,6.92148,False
+LMC,XN,Lower middle income,Aggregates,Aggregates,,,,True
+LMY,XO,Low & middle income,Aggregates,Aggregates,,,,True
+LSO,LS,Lesotho,Sub-Saharan Africa ,Lower middle income,Maseru,27.7167,-29.5208,False
+LTE,V3,Late-demographic dividend,Aggregates,Aggregates,,,,True
+LTU,LT,Lithuania,Europe & Central Asia,High income,Vilnius,25.2799,54.6896,False
+LUX,LU,Luxembourg,Europe & Central Asia,High income,Luxembourg,6.1296,49.61,False
+LVA,LV,Latvia,Europe & Central Asia,High income,Riga,24.1048,56.9465,False
+MAC,MO,"Macao SAR, China",East Asia & Pacific,High income,,113.55,22.1667,False
+MAF,MF,St. Martin (French part),Latin America & Caribbean ,High income,Marigot,,,False
+MAR,MA,Morocco,"Middle East, North Africa, Afghanistan & Pakistan",Lower middle income,Rabat,-6.8704,33.9905,False
+MCO,MC,Monaco,Europe & Central Asia,High income,Monaco,7.41891,43.7325,False
+MDA,MD,Moldova,Europe & Central Asia,Upper middle income,Chisinau,28.8497,47.0167,False
+MDE,M1,Middle East (developing only),Aggregates,Aggregates,,,,True
+MDG,MG,Madagascar,Sub-Saharan Africa ,Low income,Antananarivo,45.7167,-20.4667,False
+MDV,MV,Maldives,South Asia,Upper middle income,Male,73.5109,4.1742,False
+MEA,ZQ,"Middle East, North Africa, Afghanistan & Pakistan",Aggregates,Aggregates,,,,True
+MEX,MX,Mexico,Latin America & Caribbean ,Upper middle income,Mexico City,-99.1276,19.427,False
+MHL,MH,Marshall Islands,East Asia & Pacific,Upper middle income,Majuro,171.135,7.11046,False
+MIC,XP,Middle income,Aggregates,Aggregates,,,,True
+MKD,MK,North Macedonia,Europe & Central Asia,Upper middle income,Skopje,21.4361,42.0024,False
+MLI,ML,Mali,Sub-Saharan Africa ,Low income,Bamako,-7.50034,13.5667,False
+MLT,MT,Malta,"Middle East, North Africa, Afghanistan & Pakistan",High income,Valletta,14.5189,35.9042,False
+MMR,MM,Myanmar,East Asia & Pacific,Lower middle income,Naypyidaw,95.9562,21.914,False
+MNA,XQ,"Middle East, North Africa, Afghanistan & Pakistan (excluding high income)",Aggregates,Aggregates,,,,True
+MNE,ME,Montenegro,Europe & Central Asia,Upper middle income,Podgorica,19.2595,42.4602,False
+MNG,MN,Mongolia,East Asia & Pacific,Upper middle income,Ulaanbaatar,106.937,47.9129,False
+MNP,MP,Northern Mariana Islands,East Asia & Pacific,High income,Saipan,145.765,15.1935,False
+MOZ,MZ,Mozambique,Sub-Saharan Africa ,Low income,Maputo,32.5713,-25.9664,False
+MRT,MR,Mauritania,Sub-Saharan Africa ,Lower middle income,Nouakchott,-15.9824,18.2367,False
+MUS,MU,Mauritius,Sub-Saharan Africa ,Upper middle income,Port Louis,57.4977,-20.1605,False
+MWI,MW,Malawi,Sub-Saharan Africa ,Low income,Lilongwe,33.7703,-13.9899,False
+MYS,MY,Malaysia,East Asia & Pacific,Upper middle income,Kuala Lumpur,101.684,3.12433,False
+NAC,XU,North America,Aggregates,Aggregates,,,,True
+NAF,M2,North Africa,Aggregates,Aggregates,,,,True
+NAM,NA,Namibia,Sub-Saharan Africa ,Lower middle income,Windhoek,17.0931,-22.5648,False
+NCL,NC,New Caledonia,East Asia & Pacific,High income,Noum'ea,166.464,-22.2677,False
+NER,NE,Niger,Sub-Saharan Africa ,Low income,Niamey,2.1073,13.514,False
+NGA,NG,Nigeria,Sub-Saharan Africa ,Lower middle income,Abuja,7.48906,9.05804,False
+NIC,NI,Nicaragua,Latin America & Caribbean ,Lower middle income,Managua,-86.2734,12.1475,False
+NLD,NL,Netherlands,Europe & Central Asia,High income,Amsterdam,4.89095,52.3738,False
+NOR,NO,Norway,Europe & Central Asia,High income,Oslo,10.7387,59.9138,False
+NPL,NP,Nepal,South Asia,Lower middle income,Kathmandu,85.3157,27.6939,False
+NRS,6X,Non-resource rich Sub-Saharan Africa countries,Aggregates,Aggregates,,,,True
+NRU,NR,Naoero,East Asia & Pacific,High income,Yaren District,166.920867,-0.5477,False
+NXS,6N,"IDA countries not classified as fragile situations, excluding Sub-Saharan Africa",Aggregates,Aggregates,,,,True
+NZL,NZ,New Zealand,East Asia & Pacific,High income,Wellington,174.776,-41.2865,False
+OED,OE,OECD members,Aggregates,Aggregates,,,,True
+OMN,OM,Oman,"Middle East, North Africa, Afghanistan & Pakistan",High income,Muscat,58.5874,23.6105,False
+OSS,S4,Other small states,Aggregates,Aggregates,,,,True
+PAK,PK,Pakistan,"Middle East, North Africa, Afghanistan & Pakistan",Lower middle income,Islamabad,72.8,30.5167,False
+PAN,PA,Panama,Latin America & Caribbean ,High income,Panama City,-79.5188,8.99427,False
+PER,PE,Peru,Latin America & Caribbean ,Upper middle income,Lima,-77.0465,-12.0931,False
+PHL,PH,Philippines,East Asia & Pacific,Upper middle income,Manila,121.035,14.5515,False
+PLW,PW,Palau,East Asia & Pacific,High income,Koror,134.479,7.34194,False
+PNG,PG,Papua New Guinea,East Asia & Pacific,Lower middle income,Port Moresby,147.194,-9.47357,False
+POL,PL,Poland,Europe & Central Asia,High income,Warsaw,21.02,52.26,False
+PRE,V1,Pre-demographic dividend,Aggregates,Aggregates,,,,True
+PRI,PR,Puerto Rico (US),Latin America & Caribbean ,High income,San Juan,-66,18.23,False
+PRK,KP,"Korea, Dem. People's Rep.",East Asia & Pacific,Low income,Pyongyang,125.754,39.0319,False
+PRT,PT,Portugal,Europe & Central Asia,High income,Lisbon,-9.13552,38.7072,False
+PRY,PY,Paraguay,Latin America & Caribbean ,Upper middle income,Asuncion,-57.6362,-25.3005,False
+PSE,PS,West Bank and Gaza,"Middle East, North Africa, Afghanistan & Pakistan",Lower middle income,,,,False
+PSS,S2,Pacific island small states,Aggregates,Aggregates,,,,True
+PST,V4,Post-demographic dividend,Aggregates,Aggregates,,,,True
+PYF,PF,French Polynesia,East Asia & Pacific,High income,Papeete,-149.57,-17.535,False
+QAT,QA,Qatar,"Middle East, North Africa, Afghanistan & Pakistan",High income,Doha,51.5082,25.2948,False
+ROU,RO,Romania,Europe & Central Asia,High income,Bucharest,26.0979,44.4479,False
+RRS,R6,Resource rich Sub-Saharan Africa countries,Aggregates,Aggregates,,,,True
+RUS,RU,Russian Federation,Europe & Central Asia,High income,Moscow,37.6176,55.7558,False
+RWA,RW,Rwanda,Sub-Saharan Africa ,Low income,Kigali,30.0587,-1.95325,False
+SAS,8S,South Asia,Aggregates,Aggregates,,,,True
+SAU,SA,Saudi Arabia,"Middle East, North Africa, Afghanistan & Pakistan",High income,Riyadh,46.6977,24.6748,False
+SDN,SD,Sudan,Sub-Saharan Africa ,Low income,Khartoum,32.5363,15.5932,False
+SEN,SN,Senegal,Sub-Saharan Africa ,Lower middle income,Dakar,-17.4734,14.7247,False
+SGP,SG,Singapore,East Asia & Pacific,High income,Singapore,103.85,1.28941,False
+SLB,SB,Solomon Islands,East Asia & Pacific,Lower middle income,Honiara,159.949,-9.42676,False
+SLE,SL,Sierra Leone,Sub-Saharan Africa ,Low income,Freetown,-13.2134,8.4821,False
+SLV,SV,El Salvador,Latin America & Caribbean ,Upper middle income,San Salvador,-89.2073,13.7034,False
+SMR,SM,San Marino,Europe & Central Asia,High income,San Marino,12.4486,43.9322,False
+SOM,SO,"Somalia, Fed. Rep.",Sub-Saharan Africa ,Low income,Mogadishu,45.3254,2.07515,False
+SRB,RS,Serbia,Europe & Central Asia,Upper middle income,Belgrade,20.4656,44.8024,False
+SSA,ZF,Sub-Saharan Africa (excluding high income),Aggregates,Aggregates,,,,True
+SSD,SS,South Sudan,Sub-Saharan Africa ,Low income,Juba,31.6,4.85,False
+SSF,ZG,Sub-Saharan Africa ,Aggregates,Aggregates,,,,True
+SST,S1,Small states,Aggregates,Aggregates,,,,True
+STP,ST,Sao Tome and Principe,Sub-Saharan Africa ,Lower middle income,Sao Tome,6.6071,0.20618,False
+SUR,SR,Suriname,Latin America & Caribbean ,Upper middle income,Paramaribo,-55.1679,5.8232,False
+SVK,SK,Slovak Republic,Europe & Central Asia,High income,Bratislava,17.1073,48.1484,False
+SVN,SI,Slovenia,Europe & Central Asia,High income,Ljubljana,14.5044,46.0546,False
+SWE,SE,Sweden,Europe & Central Asia,High income,Stockholm,18.0645,59.3327,False
+SWZ,SZ,Eswatini,Sub-Saharan Africa ,Lower middle income,Mbabane,31.4659,-26.5225,False
+SXM,SX,Sint Maarten (Dutch part),Latin America & Caribbean ,High income,Philipsburg,,,False
+SXZ,A4,Sub-Saharan Africa excluding South Africa,Aggregates,Aggregates,,,,True
+SYC,SC,Seychelles,Sub-Saharan Africa ,High income,Victoria,55.4466,-4.6309,False
+SYR,SY,Syrian Arab Republic,"Middle East, North Africa, Afghanistan & Pakistan",Low income,Damascus,36.3119,33.5146,False
+TCA,TC,Turks and Caicos Islands,Latin America & Caribbean ,High income,Grand Turk,-71.141389,21.4602778,False
+TCD,TD,Chad,Sub-Saharan Africa ,Low income,N'Djamena,15.0445,12.1048,False
+TEA,T4,East Asia & Pacific (IDA & IBRD countries),Aggregates,Aggregates,,,,True
+TEC,T7,Europe & Central Asia (IDA & IBRD countries),Aggregates,Aggregates,,,,True
+TGO,TG,Togo,Sub-Saharan Africa ,Lower middle income,Lome,1.2255,6.1228,False
+THA,TH,Thailand,East Asia & Pacific,Upper middle income,Bangkok,100.521,13.7308,False
+TJK,TJ,Tajikistan,Europe & Central Asia,Lower middle income,Dushanbe,68.7864,38.5878,False
+TKM,TM,Turkmenistan,Europe & Central Asia,Upper middle income,Ashgabat,58.3794,37.9509,False
+TLA,T2,Latin America & the Caribbean (IDA & IBRD countries),Aggregates,Aggregates,,,,True
+TLS,TL,Timor-Leste,East Asia & Pacific,Lower middle income,Dili,125.567,-8.56667,False
+TMN,T3,"Middle East, North Africa, Afghanistan & Pakistan (IDA & IBRD)",Aggregates,Aggregates,,,,True
+TON,TO,Tonga,East Asia & Pacific,Upper middle income,Nuku'alofa,-175.216,-21.136,False
+TSA,T5,South Asia (IDA & IBRD),Aggregates,Aggregates,,,,True
+TSS,T6,Sub-Saharan Africa (IDA & IBRD countries),Aggregates,Aggregates,,,,True
+TTO,TT,Trinidad and Tobago,Latin America & Caribbean ,High income,Port-of-Spain,-61.4789,10.6596,False
+TUN,TN,Tunisia,"Middle East, North Africa, Afghanistan & Pakistan",Lower middle income,Tunis,10.21,36.7899,False
+TUR,TR,Turkiye,Europe & Central Asia,Upper middle income,Ankara,32.3606,39.7153,False
+TUV,TV,Tuvalu,East Asia & Pacific,Upper middle income,Funafuti,179.089567,-8.6314877,False
+TZA,TZ,Tanzania,Sub-Saharan Africa ,Lower middle income,Dodoma,35.7382,-6.17486,False
+UGA,UG,Uganda,Sub-Saharan Africa ,Low income,Kampala,32.5729,0.314269,False
+UKR,UA,Ukraine,Europe & Central Asia,Upper middle income,Kiev,30.5038,50.4536,False
+UMC,XT,Upper middle income,Aggregates,Aggregates,,,,True
+URY,UY,Uruguay,Latin America & Caribbean ,High income,Montevideo,-56.0675,-34.8941,False
+USA,US,United States,North America,High income,Washington D.C.,-77.032,38.8895,False
+UZB,UZ,Uzbekistan,Europe & Central Asia,Lower middle income,Tashkent,69.269,41.3052,False
+VCT,VC,St. Vincent and the Grenadines,Latin America & Caribbean ,Upper middle income,Kingstown,-61.2653,13.2035,False
+VEN,VE,"Venezuela, RB",Latin America & Caribbean ,Lower middle income,Caracas,-69.8371,9.08165,False
+VGB,VG,British Virgin Islands,Latin America & Caribbean ,High income,Road Town,-64.623056,18.431389,False
+VIR,VI,Virgin Islands (U.S.),Latin America & Caribbean ,High income,Charlotte Amalie,-64.8963,18.3358,False
+VNM,VN,Viet Nam,East Asia & Pacific,Upper middle income,Hanoi,105.825,21.0069,False
+VUT,VU,Vanuatu,East Asia & Pacific,Lower middle income,Port-Vila,168.321,-17.7404,False
+WLD,1W,World,Aggregates,Aggregates,,,,True
+WSM,WS,Samoa,East Asia & Pacific,Upper middle income,Apia,-171.752,-13.8314,False
+XKX,XK,Kosovo,Europe & Central Asia,Upper middle income,Pristina,20.926,42.565,False
+XZN,A5,Sub-Saharan Africa excluding South Africa and Nigeria,Aggregates,Aggregates,,,,True
+YEM,YE,"Yemen, Rep.","Middle East, North Africa, Afghanistan & Pakistan",Low income,Sana'a,44.2075,15.352,False
+ZAF,ZA,South Africa,Sub-Saharan Africa ,Upper middle income,Pretoria,28.1871,-25.746,False
+ZMB,ZM,Zambia,Sub-Saharan Africa ,Lower middle income,Lusaka,28.2937,-15.3982,False
+ZWE,ZW,Zimbabwe,Sub-Saharan Africa ,Lower middle income,Harare,31.0672,-17.8312,False

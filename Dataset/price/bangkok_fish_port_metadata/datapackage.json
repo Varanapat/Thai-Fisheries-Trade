@@ -1,0 +1,33 @@
+{
+  "author": {
+    "email": "jatupon.k@fishmarket.co.th",
+    "name": "จตุพล กันทอง"
+  },
+  "description": "ราคาสัตว์น้ำที่ประมูลจำหน่าย ณ สะพานปลากรุงเทพ",
+  "keywords": [
+    "ราคาสัตว์น้ำ"
+  ],
+  "license": {
+    "title": "DGA Open Government License",
+    "type": "ogl"
+  },
+  "name": "item_55f5ccbd-f9c5-49f7-ba17-dc935cd7f5b7",
+  "resources": [
+    {
+      "description": "metadata_ราคาสัตว์น้ำประจำวัน_องค์การสะพานปลา_มิย-62",
+      "format": "XLSX",
+      "hash": "836f36a691f8030ea34f2ff13c231294",
+      "name": "metadata-raakhaasatwnampracchamwan-ngkhkaarsaphaanplaa-miy-62",
+      "path": "metadata-raakhaasatwnampracchamwan-ngkhkaarsaphaanplaa-miy-62.xlsx",
+      "sources": [
+        {
+          "path": "https://opendata.data.go.th/dataset/32395b88-a084-4abb-be31-04251ac5a8c7/resource/de740b2b-6a8b-4a5b-a3ab-b7ad9ed57d31/download/metadata___-62.xlsx",
+          "title": "metadata_ราคาสัตว์น้ำประจำวัน_องค์การสะพานปลา_มิย-62"
+        }
+      ],
+      "title": "metadata_ราคาสัตว์น้ำประจำวัน_องค์การสะพานปลา_มิย-62"
+    }
+  ],
+  "title": "ราคาสัตว์น้ำประจำวัน",
+  "version": "1.0"
+}

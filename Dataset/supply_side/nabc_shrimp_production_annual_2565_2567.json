@@ -1,0 +1,44 @@
+[
+  {
+    "year": 2565,
+    "attribute": "ผลผลิต",
+    "subAttribute": "กุลาดำ",
+    "values": 17715,
+    "unit": "ตัน"
+  },
+  {
+    "year": 2565,
+    "attribute": "ผลผลิต",
+    "subAttribute": "แวนนาไม",
+    "values": 368266,
+    "unit": "ตัน"
+  },
+  {
+    "year": 2566,
+    "attribute": "ผลผลิต",
+    "subAttribute": "กุลาดำ",
+    "values": 19424,
+    "unit": "ตัน"
+  },
+  {
+    "year": 2566,
+    "attribute": "ผลผลิต",
+    "subAttribute": "แวนนาไม",
+    "values": 368983,
+    "unit": "ตัน"
+  },
+  {
+    "year": 2567,
+    "attribute": "ผลผลิต",
+    "subAttribute": "กุลาดำ",
+    "values": 17990,
+    "unit": "ตัน"
+  },
+  {
+    "year": 2567,
+    "attribute": "ผลผลิต",
+    "subAttribute": "แวนนาไม",
+    "values": 354998,
+    "unit": "ตัน"
+  }
+]
