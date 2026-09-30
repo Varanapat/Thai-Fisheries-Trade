@@ -99,10 +99,10 @@
 
 | Feature | แหล่ง | Join key | เหตุผล |
 |---|---|---|---|
-| อัตราแลกเปลี่ยน THB/USD, JPY, CNY, EUR | API ธนาคารแห่งประเทศไทย (BOT API Portal) | `date` (เดือน) + สกุลเงินของประเทศปลายทาง | บาทแข็งแล้วราคาสินค้าส่งออกแพงขึ้น |
-| GDP, CPI, ประชากรของประเทศปลายทาง | World Bank API | `country_code` + ปี | กำลังซื้อของตลาด |
+| อัตราแลกเปลี่ยน THB/USD, JPY, CNY, EUR | **ดึงแล้ว** `external/fx_daily_usd_base_ecb.csv` (ECB ผ่าน Frankfurter; BOT ต้องมี token) | `date` (เดือน) + สกุลเงินของประเทศปลายทาง | บาทแข็งแล้วราคาสินค้าส่งออกแพงขึ้น |
+| GDP, CPI, ประชากรของประเทศปลายทาง | **ดึงแล้ว** `external/worldbank_indicators_yearly.csv` (World Bank API) | `country_code` + ปี | กำลังซื้อของตลาด |
 | ผลผลิตกุ้งทะเลรายเดือน | กรมประมง | `date` + กลุ่ม HS (กุ้ง) | ฝั่ง supply |
-| สภาพอากาศของจังหวัดที่เลี้ยงกุ้ง/ท่าเรือประมง | Open-Meteo (historical API) | `date` | กระทบผลผลิต (ใช้ในโจทย์ผลผลิต/ราคาเป็นหลัก) |
+| สภาพอากาศของจังหวัดที่เลี้ยงกุ้ง/ท่าเรือประมง | **ดึงแล้ว** `external/weather_daily_shrimp_provinces.csv` (Open-Meteo) | `date` | กระทบผลผลิต (ใช้ในโจทย์ผลผลิต/ราคาเป็นหลัก) |
 | หนังสือรับรองสุขภาพสัตว์น้ำ | กรมประมง | `date` | leading indicator |
 
 **Features ที่สร้างเองจากข้อมูลหลัก**
@@ -129,7 +129,23 @@
 
 ---
 
-## 6. สคริปต์ดึงข้อมูล: `fetch_moc_fish_exports.py`
+## 6. โครงสร้างข้อมูลใน `DATASET/` (ดาวน์โหลดแล้ว)
+
+รายละเอียดทุกไฟล์ (คอลัมน์, หน่วย, ช่วงเวลา, ปัญหาที่พบ, ตารางชื่อเดิม→ชื่อใหม่) อยู่ที่ **[DATASET/DICTIONARY.md](DATASET/DICTIONARY.md)**
+
+| โฟลเดอร์ | เนื้อหา |
+|---|---|
+| `DATASET/trade/` | การค้าประมงของกรมประมง: รายเดือนตาม HS (`dof_trade_hs_monthly_*`), รายวันตามสายพันธุ์ (`dof_export_daily_*`, `dof_import_daily_*`), ใบรับรองสุขภาพ (`dof_health_cert_by_country_*`), lookup (`dof_species_hs_catalog`) |
+| `DATASET/supply_side/` | ผลผลิตจับ/เพาะเลี้ยง รายปีและรายเดือน |
+| `DATASET/price/` | มีแต่ metadata ของราคาสะพานปลา ยังไม่มีตัวเลขราคา |
+| `DATASET/external/` | อัตราแลกเปลี่ยน (ECB), เศรษฐกิจรายประเทศ (World Bank), สภาพอากาศรายจังหวัด (Open-Meteo) ดึงด้วย `scripts/fetch_external_data.py` |
+| `DATASET/_original_raw/` | ไฟล์ต้นฉบับที่ปีปนกัน ก่อนแยก |
+
+ข้อควรรู้: ชื่อไฟล์ใช้ปี พ.ศ. แต่คอลัมน์ปีในไฟล์รายวัน (`dof_*_daily_*`) และใน `external/` เป็น ค.ศ. ข้อมูลทั้งหมดยังเป็น raw ยังไม่ได้ clean
+
+---
+
+## 7. สคริปต์ดึงข้อมูล: `fetch_moc_fish_exports.py`
 
 ### Setup
 ```bash
@@ -163,9 +179,10 @@ Output: `data/moc_export_fish_<start>_<end>.csv` (long format) และ cache �
 
 ---
 
-## 7. Next steps
+## 8. Next steps
 - [ ] รัน `--check` เพื่อหา format ของ `hs_code` และค่า `limit` ที่ API รับ
 - [ ] ดึงข้อมูล 2021–2025 แล้วดูจำนวน series ที่มี coverage อย่างน้อย 80%
+- [ ] สั่งทำ data cleaning (ดูรายการปัญหาใน DICTIONARY.md หัวข้อ 7)
 - [ ] เปิดดูชุดที่สถานะ ◐ (พิกัดสินค้าประมง, ผลผลิตกุ้งรายเดือน) ว่าคอลัมน์ใช้ได้จริงไหม
 - [ ] เทียบยอดรวมจากกระทรวงพาณิชย์กับ `impexp_product` ของกรมประมง (sanity check)
 - [ ] สรุปโจทย์กับทีม# Thai-Fisheries-Trade
