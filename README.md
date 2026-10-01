@@ -6,6 +6,11 @@
 
 ---
 
+> **Notebook หลัก: [`main.ipynb`](main.ipynb)** — เดินตาม CRISP-DM มี Business Understanding และ Data Understanding แล้ว (พร้อมผลลัพธ์และกราฟ) ขั้นตอนถัดไปจะเพิ่มต่อในไฟล์เดียวกัน ใช้ `pip install pandas numpy matplotlib`
+> **โจทย์หลัก = พยากรณ์ยอดส่งออกรายเดือน** (ตามแผนเดิม) ตั้งความคาดหวังล่วงหน้าจากข้อมูลว่า ML อาจไม่ชนะ baseline และรายงานผลตามจริง ส่วน Clustering ตลาดเป็นอีกงาน ML ที่ต้องส่งมอบ (และช่วยอธิบายความแม่น) และ Early Warning เป็นส่วนเสริม รายละเอียดอยู่ใน `main.ipynb` ส่วน 1.4 และ 2.2.1
+
+---
+
 ## 1. ข้อมูลตั้งต้น
 
 | รายการ | รายละเอียด |
@@ -41,7 +46,7 @@
 
 | ชุดข้อมูล | หน่วยงาน | สถานะ |
 |---|---|---|
-| [ข้อมูลผลผลิตกุ้งทะเลรายเดือน](https://nabc-catalog.oae.go.th/dataset/fisheries_production_shrimp) | กรมประมง (ผ่าน NABC) | ◐ |
+| [ข้อมูลผลผลิตกุ้งทะเลรายเดือน](https://nabc-catalog.oae.go.th/dataset/fisheries_production_shrimp) | กรมประมง (ผ่าน NABC) | ◐ → ใช้ชุดต้นทาง [afpd-appd](https://catalog.fisheries.go.th/dataset/afpd-appd) ดาวน์โหลดแล้ว (23 เดือน ดู DICTIONARY 3.5) |
 | [ปริมาณและมูลค่าสัตว์น้ำทั้งหมด](https://gdcatalog.go.th/dataset/gdpublish-dofd07-05-0101-02) | กรมประมง | ◐ |
 | [ปริมาณและมูลค่าการจับสัตว์น้ำ](https://gdcatalog.go.th/dataset/gdpublish-dofd07-05-0101-03) | กรมประมง | ◐ |
 | [ปริมาณและมูลค่าผลผลิตสัตว์น้ำจากการเพาะเลี้ยง](https://gdcatalog.go.th/dataset/gdpublish-dofd07-05-0101-04) | กรมประมง | ◐ |
@@ -116,20 +121,7 @@
 
 ---
 
-## 5. โครง CRISP-DM
-
-| Phase | สิ่งที่ทำ |
-|---|---|
-| 1. Business Understanding | ตั้งคำถามว่าใครได้ประโยชน์ และกำหนดเกณฑ์ความสำเร็จ เช่น MAPE ต่ำกว่า baseline |
-| 2. Data Understanding | ดึงข้อมูลจาก API, ดู coverage ของแต่ละ series, EDA, clustering ตลาด (โจทย์เสริม B) |
-| 3. Data Preparation | จัดการค่าว่าง (`quantity = 0`), คัด series ที่ข้อมูลไม่พอออก, join ข้อมูลภายนอก, สร้าง lag features |
-| 4. Modeling | Baseline → SARIMA → LightGBM (+ โจทย์เสริม A ถ้ามีเวลา) |
-| 5. Evaluation | Rolling-origin backtest เทียบกับ baseline ดู feature importance / SHAP |
-| 6. Deployment | Dashboard หรือรายงานพยากรณ์รายตลาด และข้อเสนอแนะต่อผู้ได้ประโยชน์ |
-
----
-
-## 6. โครงสร้างข้อมูลใน `DATASET/` (ดาวน์โหลดแล้ว)
+## 5. โครงสร้างข้อมูลใน `DATASET/` (ดาวน์โหลดแล้ว)
 
 รายละเอียดทุกไฟล์ (คอลัมน์, หน่วย, ช่วงเวลา, ปัญหาที่พบ, ตารางชื่อเดิม→ชื่อใหม่) อยู่ที่ **[DATASET/DICTIONARY.md](DATASET/DICTIONARY.md)**
 
@@ -139,50 +131,9 @@
 | `DATASET/supply_side/` | ผลผลิตจับ/เพาะเลี้ยง รายปีและรายเดือน |
 | `DATASET/price/` | มีแต่ metadata ของราคาสะพานปลา ยังไม่มีตัวเลขราคา |
 | `DATASET/external/` | อัตราแลกเปลี่ยน (ECB), เศรษฐกิจรายประเทศ (World Bank), สภาพอากาศรายจังหวัด (Open-Meteo) ดึงด้วย `scripts/fetch_external_data.py` |
+| `DATASET/clean/` | **ข้อมูลหลัง clean รอบแรก** (สร้างจาก `scripts/clean_data.py` รายละเอียดใน DICTIONARY หัวข้อ 8) |
 | `DATASET/_original_raw/` | ไฟล์ต้นฉบับที่ปีปนกัน ก่อนแยก |
 
-ข้อควรรู้: ชื่อไฟล์ใช้ปี พ.ศ. แต่คอลัมน์ปีในไฟล์รายวัน (`dof_*_daily_*`) และใน `external/` เป็น ค.ศ. ข้อมูลทั้งหมดยังเป็น raw ยังไม่ได้ clean
+ข้อควรรู้: ชื่อไฟล์ใช้ปี พ.ศ. แต่คอลัมน์ปีในไฟล์รายวัน (`dof_*_daily_*`) และใน `external/` เป็น ค.ศ. ไฟล์นอก `clean/` ยังเป็น raw
 
 ---
-
-## 7. สคริปต์ดึงข้อมูล: `fetch_moc_fish_exports.py`
-
-### Setup
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install requests pandas
-```
-
-### ใช้งาน
-```bash
-python fetch_moc_fish_exports.py --check                  # โหมดวินิจฉัย: ลองยิง 6 แบบ
-python fetch_moc_fish_exports.py --start 2021 --end 2025  # ดึงจริง
-```
-Output: `data/moc_export_fish_<start>_<end>.csv` (long format) และ cache ของแต่ละ request อยู่ที่ `data/cache/`
-
-### HS codes ที่ดึง (แก้ได้ใน `HS_CODES`)
-| HS | สินค้า |
-|---|---|
-| 0302 | ปลาสด/แช่เย็น |
-| 0303 | ปลาแช่แข็ง |
-| 0304 | เนื้อปลา/ฟิลเล |
-| 0306 | สัตว์น้ำมีเปลือก (กุ้ง ปู) |
-| 0307 | หอย/หมึก |
-| 1604 | ปลาปรุงแต่ง/ทูน่ากระป๋อง |
-| 1605 | กุ้ง/สัตว์น้ำมีเปลือกปรุงแต่ง |
-
-### ปัญหาที่เจออยู่ (ยังแก้ไม่เสร็จ)
-- ยิง `hs_code=0306` แล้วได้ `status 200` แต่ body เป็น `{"error": "Bad Request."}` → ยังไม่รู้ว่า API รับ HS กี่หลัก **ต้องรัน `--check` ก่อน**
-- API ตอบช้า เคย timeout ที่ 30 วินาที ตอนนี้ปรับเป็น 90 วินาทีแล้ว
-- ถ้าเคยรันเวอร์ชันเก่ามาแล้ว ให้ลบ cache ก่อนรันใหม่: `rm -rf data/cache`
-
----
-
-## 8. Next steps
-- [ ] รัน `--check` เพื่อหา format ของ `hs_code` และค่า `limit` ที่ API รับ
-- [ ] ดึงข้อมูล 2021–2025 แล้วดูจำนวน series ที่มี coverage อย่างน้อย 80%
-- [ ] สั่งทำ data cleaning (ดูรายการปัญหาใน DICTIONARY.md หัวข้อ 7)
-- [ ] เปิดดูชุดที่สถานะ ◐ (พิกัดสินค้าประมง, ผลผลิตกุ้งรายเดือน) ว่าคอลัมน์ใช้ได้จริงไหม
-- [ ] เทียบยอดรวมจากกระทรวงพาณิชย์กับ `impexp_product` ของกรมประมง (sanity check)
-- [ ] สรุปโจทย์กับทีม# Thai-Fisheries-Trade
