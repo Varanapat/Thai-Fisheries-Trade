@@ -1,0 +1,106 @@
+{
+  "trade_hs_exact_dups_dropped": 12,
+  "trade_hs_iso2_missing_in_raw": 0,
+  "trade_hs_rows_sharing_key": 15659,
+  "trade_hs_monthly": {
+    "rows": 65223,
+    "cols": 17
+  },
+  "trade_hs_monthly_panel": {
+    "rows": 55579,
+    "cols": 11
+  },
+  "dim_country_namibia_ok": true,
+  "dim_country_not_in_worldbank": [
+    "CK",
+    "FK",
+    "GF",
+    "GP",
+    "GS",
+    "MQ",
+    "RE",
+    "TW",
+    "WF",
+    "YT",
+    "BL",
+    "AN"
+  ],
+  "dim_country": {
+    "rows": 207,
+    "cols": 7
+  },
+  "trade_hs_iso2_still_missing_not_yy": 0,
+  "health_cert_key_dup_rows_merged": 2,
+  "health_cert": {
+    "rows": 611,
+    "cols": 7
+  },
+  "catalog_hs11_not_11_digits": 18,
+  "catalog_item_code_dups": 0,
+  "catalog": {
+    "rows": 12275,
+    "cols": 11
+  },
+  "prod_source_quantity": {
+    "rows": 27,
+    "cols": 7
+  },
+  "prod_group_quantity": {
+    "rows": 27,
+    "cols": 12
+  },
+  "prod_source_value": {
+    "rows": 27,
+    "cols": 7
+  },
+  "prod_group_value": {
+    "rows": 27,
+    "cols": 12
+  },
+  "marine_exact_dups": 0,
+  "marine_rows": 45636,
+  "marine_catch": {
+    "rows": 45636,
+    "cols": 10
+  },
+  "aquaculture_null_numeric": {
+    "farms": 0,
+    "area": 0,
+    "quantity": 0,
+    "value": 0
+  },
+  "aquaculture_key_dups": 41,
+  "aquaculture": {
+    "rows": 16791,
+    "cols": 11
+  },
+  "nabc_shrimp": {
+    "rows": 6,
+    "cols": 6
+  },
+  "export_daily_exact_dup_rows": 59393,
+  "export_daily_country_iso_coverage": 1.0,
+  "export_daily_zero_value_rows": 206,
+  "export_daily": {
+    "rows": 1413014,
+    "cols": 19
+  },
+  "import_daily_exact_dup_rows": 20061,
+  "import_daily_country_iso_coverage": 0.9995,
+  "import_daily_zero_value_rows": 258,
+  "import_daily": {
+    "rows": 841403,
+    "cols": 19
+  },
+  "shrimp_monthly_2568_file_subset_of_2569_file": true,
+  "shrimp_monthly_key_dups": 0,
+  "shrimp_monthly_months": 23,
+  "shrimp_monthly": {
+    "rows": 1596,
+    "cols": 10
+  },
+  "biomass": {
+    "rows": 153,
+    "cols": 5
+  }
+}
