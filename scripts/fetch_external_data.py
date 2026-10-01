@@ -3,6 +3,8 @@
   1. อัตราแลกเปลี่ยนรายวัน  : Frankfurter API (อัตราอ้างอิง ECB)
   2. ตัวชี้วัดเศรษฐกิจรายปี : World Bank Open Data API (WDI)
   3. สภาพอากาศรายวัน       : Open-Meteo Historical Weather API (ERA5)
+  4. (fxlong, wblong) ชุดยาวสำหรับ Data Preparation: อัตราแลกเปลี่ยนรายเดือนตั้งแต่ 2010 และ World Bank ตั้งแต่ 2008
+     (ชุดข้อมูลของ Comtrade เริ่มปี 2010 และ feature ใช้ค่าย้อนหลัง จึงต้องการประวัติยาวกว่าชุดข้อมูลแรก)
 
 ใช้: python scripts/fetch_external_data.py            (ดึงทั้งหมด)
      python scripts/fetch_external_data.py fx wb wx   (เลือกบางชุด)
@@ -115,7 +117,42 @@ def fetch_wx():
     print("saved wx", out.shape)
 
 
+def fetch_fx_long():
+    """ค่าเฉลี่ยรายเดือนของอัตราแลกเปลี่ยน (หน่วยสกุลนั้นต่อ 1 USD) ตั้งแต่ ม.ค. 2010"""
+    rows, today = [], date.today()
+    for y in range(2010, today.year + 1):
+        end = min(date(y, 12, 31), today)
+        js = get_json(f"https://api.frankfurter.dev/v1/{y}-01-01..{end}", {"base": "USD"})
+        for d, rates in js["rates"].items():
+            rows += [(d, cur, v) for cur, v in rates.items()]
+        print("fxlong", y, len(js["rates"]), "days")
+    df = pd.DataFrame(rows, columns=["date", "currency", "per_usd"])
+    df["month"] = pd.to_datetime(df.date).dt.to_period("M").dt.to_timestamp()
+    m = df.groupby(["month", "currency"], as_index=False).per_usd.mean()
+    thb = m[m.currency == "THB"].set_index("month").per_usd.rename("thb_per_usd")
+    m = m.join(thb, on="month")
+    m["thb_per_unit"] = m.thb_per_usd / m.per_usd
+    m.rename(columns={"month": "date"}).to_csv(OUT / "fx_monthly_usd_base_ecb_2010.csv", index=False, encoding="utf-8-sig")
+    print("saved fxlong", m.shape)
+
+
+def fetch_wb_long():
+    frames = []
+    for code, name in WB_INDICATORS.items():
+        js = get_json(f"https://api.worldbank.org/v2/country/all/indicator/{code}",
+                      {"format": "json", "date": "2008:2025", "per_page": 20000})
+        df = pd.DataFrame([{"iso3": r["countryiso3code"], "year": int(r["date"]), name: r["value"]} for r in js[1]])
+        frames.append(df.set_index(["iso3", "year"]))
+        print("wblong", code, len(df))
+    meta = pd.read_csv(OUT / "worldbank_country_meta.csv", keep_default_na=False, na_values=[""])
+    wide = pd.concat(frames, axis=1).reset_index().merge(meta[["iso3", "iso2", "name_en", "is_aggregate"]], on="iso3", how="left")
+    wide = wide[~wide.is_aggregate.fillna(True).astype(bool)].drop(columns="is_aggregate")
+    wide = wide[["iso2", "iso3", "name_en", "year", *WB_INDICATORS.values()]].sort_values(["iso3", "year"])
+    wide.to_csv(OUT / "worldbank_indicators_yearly_2008.csv", index=False, encoding="utf-8-sig")
+    print("saved wblong", wide.shape)
+
+
 if __name__ == "__main__":
-    steps = {"fx": fetch_fx, "wb": fetch_wb, "wx": fetch_wx}
-    for s in (sys.argv[1:] or steps):
+    steps = {"fx": fetch_fx, "wb": fetch_wb, "wx": fetch_wx, "fxlong": fetch_fx_long, "wblong": fetch_wb_long}
+    for s in (sys.argv[1:] or ["fx", "wb", "wx"]):
         steps[s]()
