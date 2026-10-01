@@ -6,7 +6,8 @@
 
 ---
 
-> **Notebook หลัก: [`main.ipynb`](main.ipynb)** — เดินตาม CRISP-DM มี Business Understanding และ Data Understanding แล้ว (พร้อมผลลัพธ์และกราฟ) ขั้นตอนถัดไปจะเพิ่มต่อในไฟล์เดียวกัน ใช้ `pip install pandas numpy matplotlib`
+> **Notebook หลัก: [`main.ipynb`](main.ipynb)** — เดินตาม CRISP-DM มี Business Understanding, Data Understanding และ Data Preparation แล้ว (พร้อมผลลัพธ์และกราฟ) ขั้นตอนถัดไป (Modeling) จะเพิ่มต่อในไฟล์เดียวกัน ใช้ `pip install pandas numpy matplotlib`
+> ถ้าต้องการแชร์เฉพาะส่วน Business + Data Understanding: เปิด [`reports/main_BU_DU.html`](reports/main_BU_DU.html) (ภาพนิ่ง ไม่ต้องใช้ Jupyter) · ข้อมูลที่เตรียมแล้วอยู่ที่ `DATASET/prepared/`
 > **โจทย์หลัก = พยากรณ์ยอดส่งออกรายเดือน** (ตามแผนเดิม) ตั้งความคาดหวังล่วงหน้าจากข้อมูลว่า ML อาจไม่ชนะ baseline และรายงานผลตามจริง ส่วน Clustering ตลาดเป็นอีกงาน ML ที่ต้องส่งมอบ (และช่วยอธิบายความแม่น) และ Early Warning เป็นส่วนเสริม รายละเอียดอยู่ใน `main.ipynb` ส่วน 1.4 และ 2.2.1
 
 ---
