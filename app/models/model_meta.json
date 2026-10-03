@@ -1,0 +1,150 @@
+{
+ "last_month": "2026-04-01",
+ "forecast_cols": [
+  "lag0",
+  "lag1",
+  "lag2",
+  "lag5",
+  "lag11",
+  "mean3",
+  "mean6",
+  "mean12",
+  "std6",
+  "std12",
+  "mom3_12",
+  "yoy12",
+  "active12",
+  "since_last",
+  "uv12",
+  "hs_mean3",
+  "ctry_mean3",
+  "share_hs12",
+  "share_ctry12",
+  "thb_chg3",
+  "ccy_chg3",
+  "gdppc_log",
+  "pop_log",
+  "gdp_growth",
+  "inflation",
+  "sin_m",
+  "cos_m",
+  "origin_month",
+  "hs4",
+  "region",
+  "income"
+ ],
+ "ew_cols": [
+  "yoy_cur",
+  "base_log",
+  "known_ratio",
+  "proj3",
+  "proj12",
+  "known_yoy",
+  "base_trend",
+  "S12_log",
+  "mom3_12",
+  "std6",
+  "std12",
+  "active12",
+  "since_last",
+  "uv12",
+  "share_ctry12",
+  "share_hs12",
+  "lag0",
+  "mean3",
+  "mean12",
+  "hs4"
+ ],
+ "qhat": {
+  "1": 0.055111741557415626,
+  "3": 0.09990303858076889,
+  "6": 0.12324391019725073
+ },
+ "ses_alpha": {
+  "1": 0.5,
+  "3": 0.2,
+  "6": 0.1
+ },
+ "categories_fc": {
+  "hs4": [
+   "0301",
+   "0302",
+   "0303",
+   "0304",
+   "0305",
+   "0306",
+   "0307",
+   "0308",
+   "1604",
+   "1605"
+  ],
+  "region": [
+   "East Asia & Pacific",
+   "Europe & Central Asia",
+   "Latin America & Caribbean ",
+   "Middle East, North Africa, Afghanistan & Pakistan",
+   "North America",
+   "South Asia",
+   "Sub-Saharan Africa "
+  ],
+  "income": [
+   "High income",
+   "Low income",
+   "Lower middle income",
+   "Upper middle income"
+  ]
+ },
+ "categories_ew": {
+  "hs4": [
+   "0301",
+   "0302",
+   "0303",
+   "0304",
+   "0305",
+   "0306",
+   "0307",
+   "0308",
+   "1604",
+   "1605"
+  ]
+ },
+ "train_kw": {
+  "1": {
+   "delta": true,
+   "weight": "sqrt",
+   "obj": "l1"
+  },
+  "3": {
+   "delta": true,
+   "weight": null,
+   "obj": "l1"
+  },
+  "6": {
+   "delta": true,
+   "weight": "sqrt",
+   "obj": "l1"
+  }
+ },
+ "params": {
+  "n_estimators": 300,
+  "learning_rate": 0.05,
+  "num_leaves": 15,
+  "min_child_samples": 100,
+  "subsample": 0.8,
+  "subsample_freq": 1,
+  "colsample_bytree": 0.8
+ },
+ "ew_params": {
+  "n_estimators": 300,
+  "learning_rate": 0.03,
+  "num_leaves": 15,
+  "min_child_samples": 50,
+  "subsample": 0.8,
+  "subsample_freq": 1,
+  "colsample_bytree": 0.8,
+  "random_state": 0
+ },
+ "ew_horizon": 6,
+ "ew_threshold": 0.2,
+ "n_series": 332
+}
