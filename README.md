@@ -1,141 +1,175 @@
-# Thai Fisheries Trade — ML Project (CRISP-DM)
+<div align="center">
 
-โปรเจกต์วิชา ML: ใช้ Open Data ของไทยอย่างน้อย 1 ชุด วิเคราะห์และสร้างโมเดลตามกระบวนการ CRISP-DM และดึงข้อมูลภายนอก (สภาพอากาศ, เศรษฐกิจ, API อื่น ๆ) มาเพิ่มมิติของ feature ได้
+<img src="assets/banner.svg" alt="Thai Fisheries Trade — ML project" width="100%"/>
 
-> **สถานะ:** ยังอยู่ขั้นเลือกโจทย์และสำรวจข้อมูล (Business Understanding / Data Understanding)
+# 🦐 Thai Fisheries Trade — ML Project
+
+**พยากรณ์ยอดส่งออกสินค้าประมงไทยรายเดือน · จัดกลุ่มตลาดคู่ค้า · เตือนตลาดที่ยอดกำลังจะตก**
+*Monthly export forecasting, market segmentation and early warning for Thai seafood, built with CRISP-DM on open data.*
+
+![Python](https://img.shields.io/badge/Python-3.x-3776AB?logo=python&logoColor=white)
+![LightGBM](https://img.shields.io/badge/LightGBM-forecasting-2ea44f)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-clustering-F7931E?logo=scikitlearn&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-app-FF4B4B?logo=streamlit&logoColor=white)
+![Method](https://img.shields.io/badge/method-CRISP--DM-0ea5e9)
+![Data](https://img.shields.io/badge/data-100%25%20open-brightgreen)
+
+<img src="assets/wave_divider.svg" alt="" width="100%"/>
+
+</div>
+
+โปรเจกต์วิชา Machine Learning ใช้ **ข้อมูลเปิดจริง** (UN Comtrade, กรมประมง, World Bank, ECB, Open-Meteo) ตอบคำถามว่า
+*"ส่งออกสินค้าประมงไปตลาดไหน เดือนหน้า/อีก 3/6 เดือนจะได้เท่าไร และตลาดไหนกำลังจะแย่?"* — เดินตามขั้นตอน CRISP-DM ครบ
+ตั้งแต่ Business Understanding ถึง Deployment (แอป Streamlit ใช้โมเดลจริง)
+
+> 📓 **ทุกอย่างอยู่ใน [`main.ipynb`](main.ipynb)** (มีผลรันและกราฟครบ) · 🌐 ลองแอป: `streamlit run app/app.py`
 
 ---
 
-> **Notebook หลัก: [`main.ipynb`](main.ipynb)** — เดินตาม CRISP-DM มี Business Understanding, Data Understanding, Data Preparation และ Modeling ครบ 3 โจทย์ (Clustering, พยากรณ์ระยะ 1/3/6 เดือน พร้อมช่วงความไม่แน่นอน, Early Warning) และ Evaluation แล้ว · Deployment: แอป Streamlit เสร็จแล้ว (เหลือรายงาน/สไลด์) (พร้อมผลลัพธ์และกราฟ) ขั้นตอนถัดไป (Modeling) จะเพิ่มต่อในไฟล์เดียวกัน ใช้ `pip install pandas numpy matplotlib scikit-learn lightgbm`
-> ถ้าต้องการแชร์เฉพาะส่วน Business + Data Understanding: เปิด [`reports/main_BU_DU.html`](reports/main_BU_DU.html) (ภาพนิ่ง ไม่ต้องใช้ Jupyter) · ข้อมูลที่เตรียมแล้วอยู่ที่ `DATASET/prepared/`
-> **แอป Streamlit: [`app/`](app/README.md)** — ดูผลลัพธ์แบบโต้ตอบ พยากรณ์รายตลาดพร้อมช่วง 80% เตือนตลาดเสี่ยง และลองสถานการณ์จำลองด้วยโมเดลจริง รัน `pip install -r app/requirements.txt && streamlit run app/app.py`
-> **โจทย์หลัก = พยากรณ์ยอดส่งออกรายเดือน** (ตามแผนเดิม) ตั้งความคาดหวังล่วงหน้าจากข้อมูลว่า ML อาจไม่ชนะ baseline และรายงานผลตามจริง ส่วน Clustering ตลาดเป็นอีกงาน ML ที่ต้องส่งมอบ (และช่วยอธิบายความแม่น) และ Early Warning เป็นส่วนเสริม รายละเอียดอยู่ใน `main.ipynb` ส่วน 1.4 และ 2.2.1
+## 🎯 สรุปผลแบบตรงไปตรงมา
 
----
+โปรเจกต์นี้ตั้งใจ **รายงานตามจริง** ไม่ได้ปรับให้ ML ดูชนะ
 
-## 1. ข้อมูลตั้งต้น
-
-| รายการ | รายละเอียด |
-|---|---|
-| ชื่อชุดข้อมูล | ปริมาณและมูลค่าการนำเข้าส่งออกสินค้าประมง (`impexp_product`) |
-| หน่วยงาน | กรมประมง |
-| ลิงก์ | [catalog.fisheries.go.th/dataset/impexp_product](https://catalog.fisheries.go.th/dataset/impexp_product/resource/53896d05-43eb-4f7c-916e-fd7893d7970b) · [GD Catalog mirror](https://gdcatalog.go.th/dataset/gdpublish-impexp-product) |
-
-**ข้อจำกัด:** ชุดนี้น่าจะเป็นตัวเลขรวมระดับประเทศ (รายปีหรือรายเดือน) จึงมีจำนวนแถวน้อยเกินไปสำหรับเทรนโมเดล ML
-→ ใช้ชุดนี้เป็น **baseline และตัวเช็กความถูกต้อง (sanity check)** ส่วนข้อมูลหลักสำหรับเทรนมาจาก API ของกระทรวงพาณิชย์ (หัวข้อ 2.1)
-
----
-
-## 2. ชุดข้อมูลที่เกี่ยวข้อง (ข้อมูลจริงจากหน่วยงานรัฐ)
-
-ความหมายของสถานะ:
-- ✔ = เปิดหน้า metadata และอ่านรายละเอียดแล้ว
-- ◐ = เห็นในผลค้นหาว่ามีอยู่บนพอร์ทัลรัฐจริง แต่ยังไม่ได้เปิดดูคอลัมน์ **ต้องเช็กเองก่อนใช้**
-
-### 2.1 การค้าสินค้าประมง
-
-| ชุดข้อมูล | หน่วยงาน | สถานะ | บทบาทในโปรเจกต์ |
+| โจทย์ | วิธี | ผลบนช่วงทดสอบ (เม.ย. 2023 – เม.ย. 2026, รันครั้งเดียว) | อ่านผลอย่างไร |
 |---|---|---|---|
-| [ข้อมูลตลาดส่งออกรายพิกัดศุลกากร (API)](https://data.moc.go.th/OpenData/ExportHarmonizeCountries) | กระทรวงพาณิชย์ | ✔ | **ข้อมูลหลัก**: รายเดือน × ประเทศ × HS code มีปริมาณและมูลค่า (USD/THB) |
-| [ข้อมูลสินค้าส่งออก-นำเข้า](https://data.go.th/dataset/dataset_31_01) | กระทรวงพาณิชย์ | ✔ | มาจากข้อมูลศุลกากร รายเดือน ตั้งแต่ปี 1991 สัญญาอนุญาต CC-BY |
-| [API ค้นหารหัสสินค้า](https://data.moc.go.th/OpenData/Products) | กระทรวงพาณิชย์ | ✔ | หา HS code จากชื่อสินค้า |
-| [สถิติการนำเข้าสัตว์น้ำ](https://gdcatalog.go.th/dataset/gdpublish-import-pro) | กรมประมง | ◐ | ฝั่งนำเข้า |
-| [สถิติการส่งออกสัตว์น้ำ](https://gdcatalog.go.th/dataset/gdpublish-export-pro) | กรมประมง | ◐ | ฝั่งส่งออก ใช้เทียบกับข้อมูลกระทรวงพาณิชย์ |
-| [พิกัดสินค้าประมง](https://catalog.fisheries.go.th/en/dataset/datahamonize) | กรมประมง | ◐ | lookup table สำหรับ map HS code ↔ ชื่อสินค้าประมง |
-| [หนังสือรับรองสุขภาพสัตว์น้ำเพื่อการส่งออก](https://catalog.fisheries.go.th/en/dataset/aahrdd-healthcer/resource/f0e4234d-dcf8-4b25-95c6-3924f7d374ce?inner_span=True) | กรมประมง | ◐ | leading indicator ของการส่งออก |
+| **1. พยากรณ์ยอดส่งออกรายเดือน** (ตลาด × สินค้า HS4, 1/3/6 เดือนล่วงหน้า) | LightGBM เทียบ SES · ARIMA/SARIMA · ค่าเฉลี่ยเคลื่อนที่ · seasonal naive · Ridge | WAPE **21.6% / 23.9% / 25.6%** (1/3/6 เดือน) ระดับตลาด-สินค้า · ยอดรวมทั้งประเทศ **5.9% / 5.8% / 7.5%** | ชนะ baseline ที่ดีที่สุด (SES) แค่ราว **5%** ที่ 1–3 เดือน และ **เสมอ** ที่ 6 เดือน — ได้ประโยชน์จริงเมื่อรวมระดับ (ยิ่งรวม ยิ่งแม่น) |
+| **1b. ช่วงความไม่แน่นอน 80%** | Quantile LightGBM + conformal (CQR) | coverage จริง **82–84%** (เป้า 80%) | ใช้ประกอบการวางแผนได้ โดยเฉพาะตลาดหลัก |
+| **2. จัดกลุ่มตลาด** | K-Means k=4 (พฤติกรรม + สัดส่วนสินค้า) | bootstrap ARI เฉลี่ย **0.69** | กลุ่ม A (35 ประเทศ ≈ **92%** ของมูลค่า) เชื่อถือได้ · กลุ่ม B–D ตลาดเล็ก ผันผวน พยากรณ์พลาดสูง |
+| **3. Early Warning** (ยอด 12 เดือนจะตกเกิน 20% ภายใน 6 เดือน) | LightGBM · RF · Logistic เทียบ persistence/run-rate | PR-AUC **0.83** (สุ่ม 0.22) · lift ≈ 4 เท่า | ส่วนใหญ่เป็น "เลขคณิต" — baseline run-rate ได้ 0.79 อยู่แล้ว · เฉพาะตลาดที่ *ยังไม่ตก* PR-AUC 0.72 |
 
-### 2.2 ฝั่งผลผลิต (supply-side features)
+<div align="center">
+<img src="assets/figures/07_summary.png" alt="สรุปผลทั้งโครงงาน" width="92%"/>
+<br/><sub>ภาพสรุปผล (จาก <code>main.ipynb</code> หัวข้อ 5.3)</sub>
+</div>
 
-| ชุดข้อมูล | หน่วยงาน | สถานะ |
-|---|---|---|
-| [ข้อมูลผลผลิตกุ้งทะเลรายเดือน](https://nabc-catalog.oae.go.th/dataset/fisheries_production_shrimp) | กรมประมง (ผ่าน NABC) | ◐ → ใช้ชุดต้นทาง [afpd-appd](https://catalog.fisheries.go.th/dataset/afpd-appd) ดาวน์โหลดแล้ว (23 เดือน ดู DICTIONARY 3.5) |
-| [ปริมาณและมูลค่าสัตว์น้ำทั้งหมด](https://gdcatalog.go.th/dataset/gdpublish-dofd07-05-0101-02) | กรมประมง | ◐ |
-| [ปริมาณและมูลค่าการจับสัตว์น้ำ](https://gdcatalog.go.th/dataset/gdpublish-dofd07-05-0101-03) | กรมประมง | ◐ |
-| [ปริมาณและมูลค่าผลผลิตสัตว์น้ำจากการเพาะเลี้ยง](https://gdcatalog.go.th/dataset/gdpublish-dofd07-05-0101-04) | กรมประมง | ◐ |
-| [สถิติการประมง](https://opendata.nesdc.go.th/dataset/fisheries-statistics) | กรมประมง (ผ่านพอร์ทัลของสภาพัฒน์) | ✔ ย้อนหลังประมาณ 10 ปี ส่วนใหญ่เป็น PDF |
-
-### 2.3 ราคา (ใช้ได้จำกัด)
-
-| ชุดข้อมูล | สถานะ | ข้อจำกัด |
-|---|---|---|
-| [ราคาสัตว์น้ำประจำวัน สะพานปลากรุงเทพ](https://data.go.th/en/dataset/item_55f5ccbd-f9c5-49f7-ba17-dc935cd7f5b7) | ✔ | หยุดอัปเดตตั้งแต่ ต.ค. 2021 |
-| [ราคากุ้งขาวแวนนาไมที่เกษตรกรขายได้ (สศก.)](https://catalog.oae.go.th/dataset/data-baer-0406) | ◐ | ตอนเปิดจริงเด้งไปหน้า login |
-
-### 2.4 ชุดที่หาเจอแต่ไม่แนะนำ
-- [ข้อมูลสัตว์น้ำของไทย](https://data.go.th/dataset/item_cb5d392d-2824-4ac4-a171-2c4796ce81c2): เป็นข้อมูลอนุกรมวิธาน (taxonomy) ไม่มีตัวเลขการค้าหรือผลผลิต
-- ระบบสถิติของกรมศุลกากรและ OAE impexp: เป็นระบบให้กดค้นทีละเงื่อนไข ไม่ใช่ open dataset ที่มีสัญญาอนุญาตระบุชัด
+### ⚠️ ข้อจำกัดที่ควรรู้ก่อนนำไปใช้
+- **ML ชนะ baseline เล็กน้อยเท่านั้น** (~5%) — ข้อมูลรายตลาด-สินค้าเสียงรบกวนสูง
+- **ข้อมูลภายนอก (อัตราแลกเปลี่ยน, World Bank) ไม่ช่วย** ตามการทดลอง ablation
+- **เชื่อถือได้เฉพาะตลาดกลุ่ม A และระดับรวม** กลุ่ม B–D พลาดสูง (WAPE 40–70%)
+- **Early Warning** ความแม่นส่วนใหญ่มาจากเลขคณิตของยอดที่รู้แล้ว ไม่ใช่การ "ทำนายอนาคตลึก ๆ"
+- **เปิดเผยการตัดสินใจหลังเห็นผล:** baseline SES ถูกเพิ่มหลังเห็นผลทดสอบ (ระบุไว้ใน notebook หัวข้อ 5.6)
+- เป็นผลงานเพื่อการเรียน **ไม่ใช่คำแนะนำการลงทุน/การค้า**
 
 ---
 
-## 3. โจทย์ที่เป็นไปได้
+## 🖥️ แอป Streamlit
 
-### โจทย์หลัก (แนะนำ): พยากรณ์มูลค่าส่งออกสินค้าประมงรายเดือน แยกตามประเทศปลายทาง
+แอป 6 หน้า ใช้โมเดล LightGBM ที่เทรนแล้วทำนายสด รวมถึงจำลองสถานการณ์ (what-if) ได้
 
-**คำถาม:** เดือนหน้าไทยจะส่งออกกุ้ง ทูน่า หรือสินค้าประมงกลุ่มอื่นไปแต่ละประเทศได้มูลค่าเท่าไร
+| ภาพรวม | พยากรณ์ + ช่วง 80% |
+|:---:|:---:|
+| <img src="assets/app/overview.jpg" width="100%"/> | <img src="assets/app/forecast.jpg" width="100%"/> |
+| **Early Warning** | **สถานการณ์จำลอง (what-if)** |
+| <img src="assets/app/early_warning.jpg" width="100%"/> | <img src="assets/app/whatif.jpg" width="100%"/> |
 
-| หัวข้อ | รายละเอียด |
+```bash
+pip install -r app/requirements.txt
+streamlit run app/app.py        # เปิด http://localhost:8501
+```
+รายละเอียด: [`app/README.md`](app/README.md) (macOS: ถ้า LightGBM แจ้งเรื่อง `libomp` ให้ `brew install libomp`)
+
+---
+
+## 📊 ตัวอย่างผลจาก Notebook
+
+<table>
+<tr>
+<td width="50%"><img src="assets/figures/01_trade_trend.png"/><br/><sub><b>Data Understanding:</b> แนวโน้มและโครงสร้างสินค้าส่งออก</sub></td>
+<td width="50%"><img src="assets/figures/02_seasonality.png"/><br/><sub><b>ฤดูกาลและความผันผวน</b> — ตัวตัดสินว่าโจทย์พยากรณ์ทำได้แค่ไหน</sub></td>
+</tr>
+<tr>
+<td><img src="assets/figures/03_cluster_profile.png"/><br/><sub><b>Clustering:</b> โปรไฟล์ของแต่ละกลุ่มตลาด</sub></td>
+<td><img src="assets/figures/04_forecast_test.png"/><br/><sub><b>Forecasting:</b> ผลช่วงทดสอบเทียบ baseline</sub></td>
+</tr>
+<tr>
+<td><img src="assets/figures/05_forecast_intervals.png"/><br/><sub><b>ช่วงความไม่แน่นอน 80%</b> (CQR)</sub></td>
+<td><img src="assets/figures/06_early_warning.png"/><br/><sub><b>Early Warning:</b> เทียบโมเดลกับ baseline</sub></td>
+</tr>
+</table>
+
+---
+
+## 🧭 ระเบียบวิธี (สิ่งที่ทำเพื่อไม่ให้ผลหลอกตัวเอง)
+
+1. **แบ่งข้อมูลตามเวลาเท่านั้น (rolling-origin, expanding window)** — ปรับโมเดลบนช่วง validation เม.ย. 2019 – มี.ค. 2022 · ช่วงทดสอบ เม.ย. 2023 – เม.ย. 2026 **รันครั้งเดียว**
+2. **ทดสอบ data leakage** — ตัดข้อมูลอนาคต คำนวณ feature ใหม่ แล้ว assert ว่าค่าเท่าเดิม
+3. **เทียบ baseline เสมอ** — เท่ากับเดือนก่อน, ปีก่อน, ค่าเฉลี่ย 3/12 เดือน, SES, ARIMA/SARIMA, Ridge
+4. **รายงานหลายมุม** — WAPE / MAE / RMSE / MAPE / Bias, bootstrap ตาม origin, แยกกลุ่มตลาด·กลุ่มสินค้า·ขนาด·ระยะพยากรณ์
+5. **ตรวจความไว** — เปลี่ยนนิยาม Early Warning (threshold/horizon) และความถี่เทรนใหม่ ผลยังคงเดิมไหม
+6. **แอปต้องตรงกับ notebook** — feature ต่างกัน ≤ 2e-12, ผลทำนายต่างกัน ≤ 4e-15 (ทดสอบด้วยสคริปต์)
+
+| ขั้น CRISP-DM | อยู่ที่ไหน |
 |---|---|
-| ประเภทงาน | Regression / time-series forecasting บน panel data |
-| หน่วยข้อมูล (1 แถว) | เดือน × ประเทศปลายทาง × HS code |
-| Target | `value_baht` ของเดือน t+1 |
-| Baseline | Seasonal naive, SARIMA |
-| โมเดลหลัก | LightGBM / XGBoost ที่ใช้ lag features |
-| Validation | Time-based split / rolling-origin **ห้าม random split** |
-| Metric | MAE, MAPE (ระวังค่าใกล้ 0), RMSE |
-
-**ใครได้ประโยชน์**
-- โรงงานแปรรูปและผู้ส่งออก: วางแผนซื้อวัตถุดิบ กำลังการผลิต และสต็อก
-- กรมส่งเสริมการค้าระหว่างประเทศ / กรมประมง: เห็นล่วงหน้าว่าตลาดไหนกำลังชะลอ จะได้ปรับนโยบายหรือจัดกิจกรรมส่งเสริมตลาดได้ทัน
-
-### โจทย์เสริม A: Early warning ว่าตลาดไหนยอดส่งออกจะตกแรง
-- Target: binary ว่ายอดลดลงเกิน X% YoY หรือไม่
-- โมเดล: Logistic Regression เทียบกับ Random Forest ต้องจัดการ class imbalance
-- ประโยชน์: ผู้ส่งออกกระจายความเสี่ยงไปตลาดอื่นได้ทัน
-
-### โจทย์เสริม B: Clustering ตลาดส่งออก (ใช้ในขั้น EDA)
-- Features: growth rate, volatility, unit value (บาท/กก.), product mix
-- โมเดล: K-Means / DBSCAN แล้วตั้งชื่อ segment เช่น "ตลาดพรีเมียมโตช้า"
-- ประโยชน์: ใช้วางกลยุทธ์ว่าควรบุกตลาดไหนด้วยสินค้าแบบไหน
-
-### โจทย์ที่ความเสี่ยงสูง: พยากรณ์ผลผลิตหรือราคากุ้งจากสภาพอากาศ
-- ข้อมูลราคายังเข้าถึงไม่ได้แน่นอน และจำนวนแถวน้อย จึงไม่แนะนำเป็นโจทย์หลัก
+| 1 Business Understanding | `main.ipynb` ส่วน 1 |
+| 2 Data Understanding | ส่วน 2 · ภาพนิ่ง [`reports/main_BU_DU.html`](reports/main_BU_DU.html) |
+| 3 Data Preparation | ส่วน 3 → ข้อมูลที่เตรียมแล้วใน `Dataset/prepared/` |
+| 4 Modeling | ส่วน 4: Clustering · Forecasting · Early Warning |
+| 5 Evaluation | ส่วน 5 |
+| 6 Deployment | [`app/`](app/) (Streamlit) |
 
 ---
 
-## 4. ข้อมูลภายนอกที่จะดึงมาเพิ่ม
+## 🗂️ โครงสร้างโปรเจกต์
 
-| Feature | แหล่ง | Join key | เหตุผล |
-|---|---|---|---|
-| อัตราแลกเปลี่ยน THB/USD, JPY, CNY, EUR | **ดึงแล้ว** `external/fx_daily_usd_base_ecb.csv` (ECB ผ่าน Frankfurter; BOT ต้องมี token) | `date` (เดือน) + สกุลเงินของประเทศปลายทาง | บาทแข็งแล้วราคาสินค้าส่งออกแพงขึ้น |
-| GDP, CPI, ประชากรของประเทศปลายทาง | **ดึงแล้ว** `external/worldbank_indicators_yearly.csv` (World Bank API) | `country_code` + ปี | กำลังซื้อของตลาด |
-| ผลผลิตกุ้งทะเลรายเดือน | กรมประมง | `date` + กลุ่ม HS (กุ้ง) | ฝั่ง supply |
-| สภาพอากาศของจังหวัดที่เลี้ยงกุ้ง/ท่าเรือประมง | **ดึงแล้ว** `external/weather_daily_shrimp_provinces.csv` (Open-Meteo) | `date` | กระทบผลผลิต (ใช้ในโจทย์ผลผลิต/ราคาเป็นหลัก) |
-| หนังสือรับรองสุขภาพสัตว์น้ำ | กรมประมง | `date` | leading indicator |
-
-**Features ที่สร้างเองจากข้อมูลหลัก**
-- `lag_1`, `lag_3`, `lag_12`, rolling mean/std
-- YoY growth
-- `unit_value_baht = value_baht / quantity`
-- ตัวแปร month/quarter (seasonality)
-- ส่วนแบ่งตลาดของแต่ละประเทศ
-
-> ข้อควรระวัง: ต้องไม่ให้ feature ใช้ข้อมูลของเดือนที่กำลังจะพยากรณ์ (data leakage) และต้องตรวจ `country_code` ของกระทรวงพาณิชย์ว่าเป็น ISO แบบเดียวกับที่ World Bank ใช้หรือไม่
+```
+├── main.ipynb                 # Notebook หลัก (CRISP-DM ครบ + ผลรัน)
+├── app/                       # แอป Streamlit (app.py, core.py, data/, models/)
+├── scripts/                   # ดึง/ทำความสะอาดข้อมูล, สร้าง asset ของแอป, ทดสอบ
+├── Dataset/
+│   ├── external/              # Comtrade, อัตราแลกเปลี่ยน, World Bank, สภาพอากาศ
+│   ├── clean/                 # ข้อมูลกรมประมงที่ทำความสะอาดแล้ว
+│   ├── prepared/              # ผลจาก Data Preparation/Modeling (panel, clusters, ผลทดสอบ)
+│   └── DICTIONARY.md          # คำอธิบายทุกไฟล์ + metadata
+├── reports/                   # ภาพนิ่ง HTML ของ BU + DU
+└── assets/                    # banner และภาพประกอบ README
+```
+อธิบายทุกไฟล์ข้อมูล: [`Dataset/DICTIONARY.md`](Dataset/DICTIONARY.md)
 
 ---
 
-## 5. โครงสร้างข้อมูลใน `DATASET/` (ดาวน์โหลดแล้ว)
+## 📦 แหล่งข้อมูล (Open Data)
 
-รายละเอียดทุกไฟล์ (คอลัมน์, หน่วย, ช่วงเวลา, ปัญหาที่พบ, ตารางชื่อเดิม→ชื่อใหม่) อยู่ที่ **[DATASET/DICTIONARY.md](DATASET/DICTIONARY.md)**
+| ข้อมูล | แหล่ง | บทบาท |
+|---|---|---|
+| การส่งออกสินค้าประมงรายเดือน × ประเทศ × HS4 (2010–2026) | [UN Comtrade](https://comtradeplus.un.org/) | **ข้อมูลหลัก** สำหรับพยากรณ์/จัดกลุ่ม/เตือน |
+| นำเข้า-ส่งออกรายเดือน/รายวัน, ใบรับรองสุขภาพสัตว์น้ำ, ผลผลิต | [กรมประมง — Open Data](https://catalog.fisheries.go.th/) | ทำความเข้าใจข้อมูลและตรวจข้าม |
+| อัตราแลกเปลี่ยน | [Frankfurter API](https://frankfurter.dev/) (อัตราอ้างอิง ECB) | ตัวแปรภายนอก |
+| GDP, ประชากร, เงินเฟ้อ | [World Bank Open Data](https://data.worldbank.org/) (CC BY 4.0) | ตัวแปรภายนอก |
+| สภาพอากาศรายวัน | [Open-Meteo](https://open-meteo.com/) (ERA5, CC BY 4.0) | ตัวแปรภายนอก |
 
-| โฟลเดอร์ | เนื้อหา |
-|---|---|
-| `DATASET/trade/` | การค้าประมงของกรมประมง: รายเดือนตาม HS (`dof_trade_hs_monthly_*`), รายวันตามสายพันธุ์ (`dof_export_daily_*`, `dof_import_daily_*`), ใบรับรองสุขภาพ (`dof_health_cert_by_country_*`), lookup (`dof_species_hs_catalog`) |
-| `DATASET/supply_side/` | ผลผลิตจับ/เพาะเลี้ยง รายปีและรายเดือน |
-| `DATASET/price/` | มีแต่ metadata ของราคาสะพานปลา ยังไม่มีตัวเลขราคา |
-| `DATASET/external/` | อัตราแลกเปลี่ยน (ECB), เศรษฐกิจรายประเทศ (World Bank), สภาพอากาศรายจังหวัด (Open-Meteo) ดึงด้วย `scripts/fetch_external_data.py` |
-| `DATASET/clean/` | **ข้อมูลหลัง clean รอบแรก** (สร้างจาก `scripts/clean_data.py` รายละเอียดใน DICTIONARY หัวข้อ 8) |
-| `DATASET/_original_raw/` | ไฟล์ต้นฉบับที่ปีปนกัน ก่อนแยก |
-
-ข้อควรรู้: ชื่อไฟล์ใช้ปี พ.ศ. แต่คอลัมน์ปีในไฟล์รายวัน (`dof_*_daily_*`) และใน `external/` เป็น ค.ศ. ไฟล์นอก `clean/` ยังเป็น raw
+ตรวจสอบเงื่อนไขการใช้งานของแต่ละแหล่งก่อนนำข้อมูลไปเผยแพร่ซ้ำ
 
 ---
+
+## 🔁 รันซ้ำ
+
+```bash
+# 1) ติดตั้ง
+python -m venv .venv && source .venv/bin/activate
+pip install pandas numpy matplotlib scikit-learn lightgbm statsmodels plotly streamlit jupyter
+
+# 2) เปิด notebook (มีผลรันบันทึกไว้แล้ว ดูได้เลยโดยไม่ต้องรันใหม่)
+jupyter lab main.ipynb
+
+# 3) ดึงข้อมูลภายนอกใหม่ (ถ้าต้องการ)
+python scripts/fetch_external_data.py            # fx, wb, wx
+python scripts/fetch_external_data.py fxlong wblong
+python scripts/fetch_comtrade.py                 # ต้องใช้อินเทอร์เน็ต; โควตา API จำกัด สคริปต์รอและทำต่อจาก cache ได้
+
+# 4) สร้างโมเดล/ข้อมูลของแอปใหม่ และทดสอบว่าตรงกับ notebook
+python scripts/build_app_assets.py
+python scripts/test_app_features.py
+```
+
+> **หมายเหตุเรื่องขนาดข้อมูล:** ไฟล์รายวันขนาดใหญ่ (`Dataset/clean/trade/trade_daily_*.csv` หลายร้อย MB) ไม่ได้อยู่ใน repo — สร้างใหม่ได้ด้วย `scripts/clean_data.py` จากไฟล์ต้นฉบับ
+
+---
+
+## 👥 ผู้จัดทำ
+
+> _(ใส่ชื่อผู้จัดทำ · รายวิชา · อาจารย์ที่ปรึกษา)_
+
+<div align="center">
+<img src="assets/wave_divider.svg" alt="" width="100%"/>
+<sub>🐟 ทำด้วยข้อมูลเปิด และความตั้งใจรายงานผลตามจริง 🌊</sub>
+</div>
