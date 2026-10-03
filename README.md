@@ -6,8 +6,9 @@
 
 ---
 
-> **Notebook หลัก: [`main.ipynb`](main.ipynb)** — เดินตาม CRISP-DM มี Business Understanding, Data Understanding, Data Preparation และ Modeling ครบ 3 โจทย์ (Clustering, พยากรณ์ระยะ 1/3/6 เดือน พร้อมช่วงความไม่แน่นอน, Early Warning) และ Evaluation แล้ว (เหลือ Deployment: รายงาน/สไลด์) (พร้อมผลลัพธ์และกราฟ) ขั้นตอนถัดไป (Modeling) จะเพิ่มต่อในไฟล์เดียวกัน ใช้ `pip install pandas numpy matplotlib scikit-learn lightgbm`
+> **Notebook หลัก: [`main.ipynb`](main.ipynb)** — เดินตาม CRISP-DM มี Business Understanding, Data Understanding, Data Preparation และ Modeling ครบ 3 โจทย์ (Clustering, พยากรณ์ระยะ 1/3/6 เดือน พร้อมช่วงความไม่แน่นอน, Early Warning) และ Evaluation แล้ว · Deployment: แอป Streamlit เสร็จแล้ว (เหลือรายงาน/สไลด์) (พร้อมผลลัพธ์และกราฟ) ขั้นตอนถัดไป (Modeling) จะเพิ่มต่อในไฟล์เดียวกัน ใช้ `pip install pandas numpy matplotlib scikit-learn lightgbm`
 > ถ้าต้องการแชร์เฉพาะส่วน Business + Data Understanding: เปิด [`reports/main_BU_DU.html`](reports/main_BU_DU.html) (ภาพนิ่ง ไม่ต้องใช้ Jupyter) · ข้อมูลที่เตรียมแล้วอยู่ที่ `DATASET/prepared/`
+> **แอป Streamlit: [`app/`](app/README.md)** — ดูผลลัพธ์แบบโต้ตอบ พยากรณ์รายตลาดพร้อมช่วง 80% เตือนตลาดเสี่ยง และลองสถานการณ์จำลองด้วยโมเดลจริง รัน `pip install -r app/requirements.txt && streamlit run app/app.py`
 > **โจทย์หลัก = พยากรณ์ยอดส่งออกรายเดือน** (ตามแผนเดิม) ตั้งความคาดหวังล่วงหน้าจากข้อมูลว่า ML อาจไม่ชนะ baseline และรายงานผลตามจริง ส่วน Clustering ตลาดเป็นอีกงาน ML ที่ต้องส่งมอบ (และช่วยอธิบายความแม่น) และ Early Warning เป็นส่วนเสริม รายละเอียดอยู่ใน `main.ipynb` ส่วน 1.4 และ 2.2.1
 
 ---
